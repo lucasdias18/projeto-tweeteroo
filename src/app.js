@@ -13,7 +13,7 @@ app.post('/sign-up', (req, res) => {
     const pic = req.body.avatar
     const user = {username: name, avatar: pic}
     if (name === "" || pic === "") {
-        res.send('Todos os campos são obrigatórios!')
+        res.status(400).send('Todos os campos são obrigatórios!')
         return;
     }
     users.push(user)
@@ -36,8 +36,30 @@ app.post('/tweets', (req, res) => {
 })
 
 app.get('/tweets', (req, res) => {
-    let ultimosTweets = [...tweets].reverse()
-    res.send(ultimosTweets.slice(0,9))
+    let tts = [...tweets].reverse()
+    let ultimosTweets = tts.slice(0,10)
+    console.log(tts)
+    const resposta = []
+    // let names = users.map((n) => n.username)
+    
+    // for (let i=0; i<=ultimosTweets.length; i++) {
+    //     // let tweetAtual = ultimosTweets[i]
+    //     let getAvatar = users.findIndex((a => a.username === ultimosTweets[i].username))
+    //     let userAtual = users[getAvatar]
+    //         resposta.push({
+    //             username: ultimosTweets[i].username,
+    //             avatar: userAtual.avatar,
+    //             tweet: ultimosTweets[i].tweet
+    //         })
+    // }
+
+    res.send(ultimosTweets)
+
+    // res.send(ultimosTweets.slice(0,10))
+    // let resposta = []
+    // for (i=0; i<=ultimosTweets.length; i++) {
+    //     resposta.push({username: ultimosTweets[i].username, avatar: users})
+    // }
 })
 
 app.listen(5000, () => console.log('servidor subiu namoral!!'));
