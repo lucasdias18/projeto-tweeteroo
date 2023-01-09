@@ -39,14 +39,12 @@ app.get('/tweets', (req, res) => {
 
     let tts = [...tweets].reverse()
     let ultimosTweets = tts.slice(0,10)
-    // console.log(tts)
 
     const tweetCompleto = ultimosTweets.map((a) => {
         const userAvatar = users.find(i => i.username === a.username)
         return {...a, avatar: userAvatar.avatar}
     })
 
-    console.log(tweetCompleto)
     res.send(tweetCompleto)
 
 })
