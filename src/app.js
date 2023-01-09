@@ -35,25 +35,27 @@ app.post('/tweets', (req, res) => {
     res.send('Ok!')
 })
 
-app.get('/tweets', (req, res) => {
+function carregarTweets() {
     let tts = [...tweets].reverse()
     let ultimosTweets = tts.slice(0,10)
-    console.log(tts)
-    const resposta = []
-    // let names = users.map((n) => n.username)
-    
-    // for (let i=0; i<=ultimosTweets.length; i++) {
-    //     // let tweetAtual = ultimosTweets[i]
-    //     let getAvatar = users.findIndex((a => a.username === ultimosTweets[i].username))
-    //     let userAtual = users[getAvatar]
-    //         resposta.push({
-    //             username: ultimosTweets[i].username,
-    //             avatar: userAtual.avatar,
-    //             tweet: ultimosTweets[i].tweet
-    //         })
-    // }
+    return ultimosTweets
+}
 
-    res.send(ultimosTweets)
+app.get('/tweets', (req, res) => {
+
+    let tts = [...tweets].reverse()
+    let ultimosTweets = tts.slice(0,10)
+    // console.log(tts)
+
+    const tweetCompleto = ultimosTweets.map((a) => {
+        const userAvatar = users.find(i => i.username === a.username)
+        return {...a, avatar: userAvatar.avatar}
+    })
+
+    console.log(tweetCompleto)
+    res.send(tweetCompleto)
+
+
 
     // res.send(ultimosTweets.slice(0,10))
     // let resposta = []
