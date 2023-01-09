@@ -31,7 +31,7 @@ app.post('/tweets', (req, res) => {
         return res.status(401).send('Faça o cadastro primeiro!')
     }
     const tweet = {username: name, tweet: tt}
-    tweet.push(tweets)
+    tweets.push(tweet)
     res.send('Ok!')
 })
 
