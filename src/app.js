@@ -35,12 +35,6 @@ app.post('/tweets', (req, res) => {
     res.send('Ok!')
 })
 
-function carregarTweets() {
-    let tts = [...tweets].reverse()
-    let ultimosTweets = tts.slice(0,10)
-    return ultimosTweets
-}
-
 app.get('/tweets', (req, res) => {
 
     let tts = [...tweets].reverse()
