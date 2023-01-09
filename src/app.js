@@ -55,13 +55,6 @@ app.get('/tweets', (req, res) => {
     console.log(tweetCompleto)
     res.send(tweetCompleto)
 
-
-
-    // res.send(ultimosTweets.slice(0,10))
-    // let resposta = []
-    // for (i=0; i<=ultimosTweets.length; i++) {
-    //     resposta.push({username: ultimosTweets[i].username, avatar: users})
-    // }
 })
 
 app.listen(5000, () => console.log('servidor subiu namoral!!'));
