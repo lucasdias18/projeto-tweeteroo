@@ -36,7 +36,8 @@ app.post('/tweets', (req, res) => {
 })
 
 app.get('/tweets', (req, res) => {
-    console.log('feito!')
+    let ultimosTweets = [...tweets].reverse()
+    res.send(ultimosTweets.slice(0,9))
 })
 
 app.listen(5000, () => console.log('servidor subiu namoral!!'));
